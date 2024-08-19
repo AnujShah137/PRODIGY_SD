@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class TemperatureConverter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Temperature Conversion Program");
+        System.out.print("Enter the temperature value: ");
+        double temperature = scanner.nextDouble();
+
+        System.out.println("Select the unit of measurement:");
+        System.out.println("1. Celsius");
+        System.out.println("2. Fahrenheit");
+        System.out.println("3. Kelvin");
+        int choice = scanner.nextInt();
+
+        double convertedTemperatureCelsius = 0;
+        double convertedTemperatureFahrenheit = 0;
+        double convertedTemperatureKelvin = 0;
+
+        switch (choice) {
+            case 1: // Celsius
+                convertedTemperatureCelsius = temperature;
+                convertedTemperatureFahrenheit = (temperature * 9 / 5) + 32;
+                convertedTemperatureKelvin = temperature + 273.15;
+                break;
+            case 2: // Fahrenheit
+                convertedTemperatureCelsius = (temperature - 32) * 5 / 9;
+                convertedTemperatureFahrenheit = temperature;
+                convertedTemperatureKelvin = (temperature - 32) * 5 / 9 + 273.15;
+                break;
+            case 3: // Kelvin
+                convertedTemperatureCelsius = temperature - 273.15;
+                convertedTemperatureFahrenheit = (temperature - 273.15) * 9 / 5 + 32;
+                convertedTemperatureKelvin = temperature;
+                break;
+            default:
+                System.out.println("Invalid choice. Please select 1, 2, or 3.");
+                System.exit(1);
+        }
+
+        System.out.println("Converted Temperatures:");
+        System.out.println("Celsius: " + convertedTemperatureCelsius + " °C");
+        System.out.println("Fahrenheit: " + convertedTemperatureFahrenheit + " °F");
+        System.out.println("Kelvin: " + convertedTemperatureKelvin + " K");
+
+        scanner.close();
+    }
+}
